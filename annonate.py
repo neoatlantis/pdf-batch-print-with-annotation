@@ -4,7 +4,7 @@ import fitz
 from PIL import Image
 
 
-def __annonate(filename):
+def __annotate(filename):
     img = Image.open(filename)
     w = min(img.size)
     h = max(img.size)
@@ -29,7 +29,7 @@ def __annonate(filename):
 
 
 
-def annonate_pdf(srcfilename, outfilename, annonation):
+def annotate_pdf(srcfilename, outfilename, annonation):
     pdf = fitz.open(srcfilename)
     page_count = pdf.page_count
     print(page_count)
@@ -40,9 +40,9 @@ def annonate_pdf(srcfilename, outfilename, annonation):
         pix.save("tempfile.png")
 
         print("#1")
-        img = __annonate("tempfile.png")
+        img = __annotate("tempfile.png")
 
 
 if __name__ == "__main__":
     import sys
-    annonate_pdf(sys.argv[1], sys.argv[2], sys.argv[3])
+    annotate_pdf(sys.argv[1], sys.argv[2], sys.argv[3])
